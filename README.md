@@ -48,7 +48,6 @@
 | Column        | Type       | Options                        |
 | ------        | ---------- | ------------------------------ |
 | user          | references | null: false, foreign_key: true |
-| purchase_time | integer    | null: false |
 | item          | references | null: false, foreign_key: true |
 
 ### Association
