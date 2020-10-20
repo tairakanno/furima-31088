@@ -3,20 +3,22 @@
 | Column         | Type   | Options     |
 | --------       | ------ | ----------- |
 | nickname       | string | null: false |
-| email          | string | null: false |
+| email          | string | null: false | unique: true
 | password       | string | null: false |
 | last_name           | string | null: false |
 | first_name          | string | null: false |
 | last_name_katakana  | string | null: false |
 | first_name_katakana | string | null: false |
-| birthday            | date   | null: false |
-
-
+| birthday_year_id         | integer   | null: false |
+| birthday_month_id         | integer   | null: false |
+| birthday_day_id         | integer   | null: false |
 ### Association
 
 - has_many :items
 - has_many :purchase_records
-
+- belongs_to_active_hash :birthday_year
+- belongs_to_active_hash :birthday_month
+- belongs_to_active_hash :birthday_day
 ## items テーブル
 
 | Column         | Type   | Options     |
