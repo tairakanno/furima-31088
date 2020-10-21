@@ -39,5 +39,5 @@ class BirthDay < ApplicationRecord
       # { id: 12, name: '11' }
       # { id: 10, name: '9' }
     ]
-    end
+  end
 end
