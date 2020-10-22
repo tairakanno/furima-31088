@@ -13,4 +13,10 @@ class Item < ApplicationRecord
     validates :prefecture_id
     validates :days_to_ship_id
   end
+
+  validates :image, presence: true, unless: :was_attached?
+
+  def was_attached?
+    self.image.attached?
+  end
 end
