@@ -53,6 +53,12 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include ("Price can't be blank")
       end
+      # it 'priceが文字列' do
+      #   @item.price = "プライス"
+      #   @item.valid?
+      #   # binding.pry
+      #   expect(@item.errors.full_messages).to include ("Price can't be blank")
+      # end
       it 'userと紐づいていないといけない' do
         @item.user = nil
         @item.valid?
