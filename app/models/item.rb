@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
 
-  validates :title, :text, :price, presence: true
+  validates :name, :text, :price, presence: true
 
   with_options presence: true, numericality: { other_than: 1 } do
     validates :category_id
