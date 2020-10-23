@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     if @item.valid?
       @item.save
-      redirect_to action: :new
+      redirect_to root_path
     else
       render action: :new
     end
