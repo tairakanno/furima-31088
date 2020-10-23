@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Items", type: :request do
+RSpec.describe 'Items', type: :request do
   # before do
   #   @item = FactoryBot.create(:item)
   # end
