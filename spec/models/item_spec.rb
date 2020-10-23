@@ -24,41 +24,45 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include ("Text can't be blank")
       end
       it 'category_idが空' do
-        @item.category_id = ""
+        @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include ("Category can't be blank")
+        expect(@item.errors.full_messages).to include ("Category must be other than 1")
       end
       it 'status_idが空' do
-        @item.status_id = ""
+        @item.status_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include ("Status can't be blank")
+        expect(@item.errors.full_messages).to include ("Status must be other than 1")
       end
       it 'delivery_cost_idが空' do
-        @item.delivery_cost_id = ""
+        @item.delivery_cost_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include ("Delivery cost can't be blank")
+        expect(@item.errors.full_messages).to include ("Delivery must be other than 1")
       end
       it 'prefecture_idが空' do
-        @item.prefecture_id = ""
+        @item.prefecture_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include ("Prefecture can't be blank")
+        expect(@item.errors.full_messages).to include ("Prefecture must be other than 1")
       end
       it 'days_to_ship_idが空' do
-        @item.days_to_ship_id = ""
+        @item.days_to_ship_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include ("Days to ship can't be blank")
+        expect(@item.errors.full_messages).to include ("Days to ship must be other than 1")
       end
       it 'priceが空' do
-        @item.price = ""
+        @item.price = 1
         @item.valid?
         expect(@item.errors.full_messages).to include ("Price can't be blank")
       end
-      # it 'priceが文字列' do
-      #   @item.price = "プライス"
-      #   @item.valid?
-      #   # binding.pry
-      #   expect(@item.errors.full_messages).to include ("Price can't be blank")
-      # end
+      it 'priceが300円以下' do
+        @item.price = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include ("Price can't be blank")
+      end
+      it 'priceが9999999円以上' do
+        @item.price = 111111111111111
+        @item.valid?
+        expect(@item.errors.full_messages).to include ("Price can't be blank")
+      end
       it 'userと紐づいていないといけない' do
         @item.user = nil
         @item.valid?
