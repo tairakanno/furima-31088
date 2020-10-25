@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :find_params, only: [:show, :edit, :update, :destroy]
   def new
     @item = Item.new
@@ -32,8 +32,10 @@ class ItemsController < ApplicationController
     end
   end
   def destroy
-    @item.destroy
-    redirect_to action: :index
+     if user_signed_in? && current_user.id == @item.id
+       @item.destroy
+       redirect_to action: :index
+     end
   end
 
   private
