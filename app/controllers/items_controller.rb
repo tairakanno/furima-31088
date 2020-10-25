@@ -35,6 +35,8 @@ class ItemsController < ApplicationController
      if user_signed_in? && current_user.id == @item.id
        @item.destroy
        redirect_to action: :index
+     else
+       render action: :index
      end
   end
 
