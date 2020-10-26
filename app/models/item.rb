@@ -20,4 +20,5 @@ class Item < ApplicationRecord
     validates :days_to_ship_id
   end
   has_one_attached :image
+  has_one :purchase_record
 end
