@@ -1,7 +1,12 @@
 class OrdersController < ApplicationController
   def index
     @item = Item.find(params[:item_id])
+    @items = Item.all.order("created_at DESC")
+    if @item.purchase_record.blank?
     @purchase_address = PurchaseRecordShippingAddress.new
+    else
+      render 'items/index'
+    end
   end
   def create
     @item = Item.find(params[:item_id])
@@ -11,7 +16,6 @@ class OrdersController < ApplicationController
       @purchase_address.save
       return redirect_to root_path
     else
-      # binding.pry
       render 'index'
     end
   end
