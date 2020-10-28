@@ -1,15 +1,15 @@
 class OrdersController < ApplicationController
+  before_action :find_params, only: [:index, :create]
+  before_action :authenticate_user!
+  before_action :move_to_index
   def index
-    @item = Item.find(params[:item_id])
-    @items = Item.all.order("created_at DESC")
     if @item.purchase_record.blank?
     @purchase_address = PurchaseRecordShippingAddress.new
     else
-      render 'items/index'
+      redirect_to root_path
     end
   end
   def create
-    @item = Item.find(params[:item_id])
     @purchase_address = PurchaseRecordShippingAddress.new(purchase_address_params)
     if @purchase_address.valid?
       pay_item
@@ -30,5 +30,13 @@ class OrdersController < ApplicationController
      card: purchase_address_params[:token],
      currency:'jpy'
    )
+  end
+  def find_params
+    @item = Item.find(params[:item_id])
+  end  
+  def move_to_index
+    if user_signed_in? && current_user.id == @item.user_id
+      redirect_to root_path
+    end
   end
 end
