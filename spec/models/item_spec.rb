@@ -10,6 +10,10 @@ RSpec.describe Item, type: :model do
       it '全部の情報が入力できている' do
         expect(@item).to be_valid
       end
+      it '建物名がなくてもいい' do
+        @item.building_name = ""
+        expect(@item.errors.full_messages).to be_valid
+      end
     end
 
     context '新規投稿できない時' do
