@@ -6,7 +6,7 @@ class PurchaseRecordShippingAddress
     validates :prefecture_id, numericality: { other_than: 1 }
     validates :municipality
     validates :address
-    # validates :phone_number, format: {with: /^\d{10}$|^\d{11}$/, message: "ハイフン不要"}
+    validates :phone_number, format: {with: /\A\d{10,11}\z/, message: "ハイフン不要"}
     validates :token
   end
 def save
