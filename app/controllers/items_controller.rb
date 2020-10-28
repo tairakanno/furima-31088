@@ -36,7 +36,7 @@ class ItemsController < ApplicationController
        @item.destroy
        redirect_to action: :index
      else
-      redirect_to root_path
+      　redirect_to root_path
      end
   end
 
