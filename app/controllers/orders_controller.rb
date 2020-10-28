@@ -4,12 +4,14 @@ class OrdersController < ApplicationController
     @purchase_address = PurchaseRecordShippingAddress.new
   end
   def create
+    @item = Item.find(params[:item_id])
     @purchase_address = PurchaseRecordShippingAddress.new(purchase_address_params)
     if @purchase_address.valid?
       pay_item
       @purchase_address.save
       return redirect_to root_path
     else
+      # binding.pry
       render 'index'
     end
   end
