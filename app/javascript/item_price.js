@@ -10,7 +10,7 @@ window.addEventListener('load', () => {
     // fee
     const fee = Math.floor(inputValue/10)
     itemFee.innerHTML = fee
-    // profit 
+    // profit
     const profit = Math.floor(inputValue - fee)
     itemProfit.innerHTML = profit
 
