@@ -12,7 +12,7 @@ const pay = () => {
       exp_year: `20${formData.get("purchase_record_shipping_address[card-exp-year]")}`,
       cvc: formData.get("purchase_record_shipping_address[card-cvc]"),
     };
- 
+    
     Payjp.createToken(card, (status, response) => {
       if (status == 200) {
         const token = response.id;
